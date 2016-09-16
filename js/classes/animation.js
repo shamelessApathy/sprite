@@ -54,8 +54,6 @@ function Animation(spritesheet, frameSpeed, startFrame, endFrame) {
 var checkAnimation = function(){
   if (keys.indexOf('left') >= 0)
   {
-    console.log('returning left');
-    console.log(keys);
     return 'left';
   }
   if (keys.indexOf('right') >= 0)
@@ -68,11 +66,12 @@ var walkRight = new Animation(spritesheet, 10, 7, 10);
 var walkLeft = new Animation(spritesheet, 10, 19, 22);
 var walkDown = new Animation(spritesheet, 10, 1, 4);
 var walkUp = new Animation(spritesheet, 10, 13, 16);
+var standingDown = new Animation(spritesheet, 10, 0, 0);
 var keys = [];
 var Game = function(){
     var x = 400;
-  var y = 200;
-  this.initialize = function(){
+    var y = 200;
+    this.initialize = function(){
     this.runLoop();
   };
   this.runLoop = function()
@@ -86,21 +85,33 @@ var Game = function(){
       setInterval(this.mainLoop, fps);
     }
   };
-
+  this.leftHandler = function(){
+    console.log('left is being pressed');
+    x = x -.5;
+    y = 50;
+    walkLeft.update();
+    walkLeft.draw(x,y);
+  };
+  this.standingDownHandler = function(){
+    console.log('default is running')
+    x = 50;
+    y = 50;
+    standingDown.draw(x,y);
+  };
   this.mainLoop = function() {
     var check = checkAnimation();
     switch (check)
     {
-      case 'left': console.log('left is being pressed');
+      case 'left': this.leftHandler();
       break;
       case 'right' : console.log('right is being pressed');
       break;
-      default : console.log('default is running');
+      default : this.standingDownHandler();
     }
-   ctx.clearRect(0, 0, 550, 300);
-     y = y - 1;
-    walkUp.update();
-    walkUp.draw(x,y);
+   //ctx.clearRect(0, 0, 550, 300);
+    // y = y - 1;
+   // walkUp.update();
+  //  walkUp.draw(x,y);
    
 
 
@@ -110,17 +121,44 @@ var Game = function(){
 var game = new Game();
  
 
- 
-/*ocument.addEventListener("keydown", function(event) {
-  if (event.which === '37')
-  {
-    console.log('pushing left');
-    keys.push('left');
+document.onkeydown = pushKey;
+
+function pushKey(e) {
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        keys.push('up');
+    }
+    else if (e.keyCode == '40') {
+        keys.push('down');
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+        keys.push('left');
+       // left arrow
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+        keys.push('right');
+    }
+
+};
+document.onkeyup = removeKey;
+function removeKey(e) {
+  if (e.keyCode == '38'){
+    var index = keys.indexOf('up');
+   keys.splice(index, 1);
   }
-  if (event.which === '39')
-  {
-    keys.push('right');
+  else if (e.keyCode == '40'){
+    var index = keys.indexOf('down');
+   keys.splice(index, 1);
   }
-});
-console.log(keys.indexOf('left') < 0);
-*/
+  else if (e.keyCode == '37'){
+    var index = keys.indexOf('left');
+    keys.splice(index, 1);
+  }
+  else if (e.keyCode == '39'){
+    var index = keys.indexOf('right');
+    keys.splice(index, 1);
+  }
+};
