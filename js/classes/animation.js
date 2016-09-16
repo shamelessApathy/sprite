@@ -60,6 +60,14 @@ var checkAnimation = function(){
   {
     return 'right';
   }
+  if (keys.indexOf('up') >= 0)
+  {
+    return 'up';
+  }
+  if (keys.indexOf('down') >= 0)
+  {
+    return 'down';
+  }
 };
 var spritesheet = new SpriteSheet('img/anime.gif', 65, 96);
 var walkRight = new Animation(spritesheet, 10, 7, 10);
@@ -86,16 +94,37 @@ var Game = function(){
     }
   };
   this.leftHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
     console.log('left is being pressed');
     x = x -.5;
-    y = 50;
     walkLeft.update();
     walkLeft.draw(x,y);
   };
+  this.rightHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
+    console.log('right is being pressed');
+    x = x +.5;
+    walkRight.update();
+    walkRight.draw(x,y);
+  };
+  this.upHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
+    console.log('right is being pressed');
+    y = y -.5;
+    walkUp.update();
+    walkUp.draw(x,y);
+  };  
+  this.downHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
+    console.log('right is being pressed');
+    y = y +.5;
+    walkDown.update();
+    walkDown.draw(x,y);
+  };
+
   this.standingDownHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
     console.log('default is running')
-    x = 50;
-    y = 50;
     standingDown.draw(x,y);
   };
   this.mainLoop = function() {
@@ -104,7 +133,11 @@ var Game = function(){
     {
       case 'left': this.leftHandler();
       break;
-      case 'right' : console.log('right is being pressed');
+      case 'right' : this.rightHandler();
+      break;
+      case 'down' : this.downHandler();
+      break;
+      case 'up' : this.upHandler();
       break;
       default : this.standingDownHandler();
     }
@@ -127,19 +160,24 @@ function pushKey(e) {
     e = e || window.event;
 
     if (e.keyCode == '38') {
-        keys.push('up');
+       if (keys.indexOf('up') < 0) {
+      keys.push('up');
+      }
     }
     else if (e.keyCode == '40') {
-        keys.push('down');
-        // down arrow
+  if (keys.indexOf('down') < 0) {
+      keys.push('down');
+      }
     }
     else if (e.keyCode == '37') {
-        keys.push('left');
-       // left arrow
+      if (keys.indexOf('left') < 0) {
+      keys.push('left');
+      }
     }
     else if (e.keyCode == '39') {
-       // right arrow
-        keys.push('right');
+       if (keys.indexOf('right') < 0) {
+      keys.push('right');
+      }
     }
 
 };
