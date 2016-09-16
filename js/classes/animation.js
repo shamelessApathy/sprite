@@ -66,10 +66,12 @@ var checkAnimation = function(){
 var spritesheet = new SpriteSheet('img/anime.gif', 65, 96);
 var walkRight = new Animation(spritesheet, 10, 7, 10);
 var walkLeft = new Animation(spritesheet, 10, 19, 22);
+var walkDown = new Animation(spritesheet, 10, 1, 4);
+var walkUp = new Animation(spritesheet, 10, 13, 16);
 var keys = [];
 var Game = function(){
-    var x = 535;
-  var y = 1;
+    var x = 400;
+  var y = 200;
   this.initialize = function(){
     this.runLoop();
   };
@@ -86,12 +88,19 @@ var Game = function(){
   };
 
   this.mainLoop = function() {
-  
-
-   ctx.clearRect(0, 0, 150, 150);
-     x = x - .5;
-    walkLeft.update();
-    walkLeft.draw(x,y);
+    var check = checkAnimation();
+    switch (check)
+    {
+      case 'left': console.log('left is being pressed');
+      break;
+      case 'right' : console.log('right is being pressed');
+      break;
+      default : console.log('default is running');
+    }
+   ctx.clearRect(0, 0, 550, 300);
+     y = y - 1;
+    walkUp.update();
+    walkUp.draw(x,y);
    
 
 
