@@ -14,7 +14,8 @@ function SpriteSheet(path, frameWidth, frameHeight) {
  
   this.image.src = path;
 };
-
+// BPAD include function ::: it is defined before animation.js in index.php
+var dpad = new Bpad();
 // Animation function, params
 function Animation(spritesheet, frameSpeed, startFrame, endFrame) {
  

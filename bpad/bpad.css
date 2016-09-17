@@ -1,0 +1,60 @@
+/* -webkit-user-select: none; iOS workaround for the problem with the hold to copy function on long touch */
+html
+{
+	-webkit-user-select: none;
+}
+.dpadSprite
+{
+	max-width:100%;
+	z-index:-1;
+}
+.prevent
+{
+	z-index:0;
+	width:100%;
+	height:100px;
+	position:absolute;
+	margin-top:-100px;
+}
+.bpad-container
+{
+	height:100px;
+	width:100px;
+	border:2px solid black;
+	position:fixed;
+	bottom:0;
+	left:0;
+}
+.bpad-direction
+{
+	width:35px;
+	height:35px;
+	background-color:grey;
+	opacity:0;
+	z-index:1;
+
+}
+#bpad-left
+{
+	position:absolute;
+	top:32px;
+	left:0;
+}
+#bpad-up
+{
+	position:absolute;
+	top:0;
+	left:32px;
+}
+#bpad-right
+{
+	top:32px;
+	left:65px;
+	position:absolute;
+}
+#bpad-down
+{
+	top:65px;
+	left:32px;
+	position:absolute;
+}
