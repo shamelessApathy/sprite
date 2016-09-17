@@ -7,6 +7,7 @@
 <canvas id='canvas' width='550' height='300'></canvas>
 
 <div class='bpad-container'>
+	<div id='dragtab'><div id='dragalert'><span>&#8595</span> Use to Move D-Pad</div></div>
 	<img src='bpad/dpadclear.png' class='dpadSprite'/>
 	<div class='prevent'></div>
 	<div class='bpad-direction' id='bpad-left'></div>

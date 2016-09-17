@@ -7,10 +7,21 @@ Bpad = function()
    {
     // This is a way to prevent the dialog box in google chromes device spoofer from popping up on a long touch event 
   window.oncontextmenu = function(event) {
-     event.preventDefault();
-     event.stopPropagation();
-     return false;
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
 };
+    this.draggable = document.getElementById('dragtab');
+    this.draggable.addEventListener('touchmove', function(event) {
+    console.log('drag function firing');
+    var touch = event.targetTouches[0];
+    //bpad container
+    this.bpadContainer = document.getElementsByClassName('bpad-container')[0];
+    // Place element where the finger is
+    this.bpadContainer.style.left = touch.pageX-25 + 'px';
+    this.bpadContainer.style.top = touch.pageY-25 + 'px';
+    event.preventDefault();
+  }, false);
   this.clearOpacity = function(){
     this.upButton.css({'opacity':'0'});
     this.rightButton.css({'opacity':'0'});
