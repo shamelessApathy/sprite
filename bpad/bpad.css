@@ -3,6 +3,40 @@ html
 {
 	-webkit-user-select: none;
 }
+#button-a
+{
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	float:left;
+	border:solid 1px black;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	text-align:center;
+	margin-top:20px;
+	margin-left:5px;
+	background-color:red;
+	padding-top:10px;
+}
+#button-b
+{
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	float:left;
+	border:solid 1px black;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	text-align:center;
+	margin-left:10px;
+	margin-top:20px;
+	background-color:red;
+	padding-top:10px;
+}
 #dragalert
 {
 	width:100px;
@@ -19,6 +53,15 @@ html
 #dragalert span
 {
 	font-size:20px;
+}
+#button-dragtab
+{
+	width:30px;
+	margin-top:-10px;
+	height:10px;
+	background-color:red;
+	position:relative;
+	z-index:10;
 }
 #dragtab
 {

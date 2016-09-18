@@ -11,6 +11,7 @@ Bpad = function()
     event.stopPropagation();
     return false;
 };
+// this makes the bpad container movable anywhere on the screen for better use
     this.draggable = document.getElementById('dragtab');
     this.draggable.addEventListener('touchmove', function(event) {
     console.log('drag function firing');
@@ -22,11 +23,25 @@ Bpad = function()
     this.bpadContainer.style.top = touch.pageY-25 + 'px';
     event.preventDefault();
   }, false);
+  // this makes the bpad buttons container draggable
+    this.draggableButtons = document.getElementById('button-dragtab');
+    this.draggableButtons.addEventListener('touchmove', function(event) {
+    console.log('drag function firing');
+    var touch = event.targetTouches[0];
+    //bpad container
+    this.buttonContainer = document.getElementsByClassName('bpad-buttons-container')[0];
+    // Place element where the finger is
+    this.buttonContainer.style.left = touch.pageX-25 + 'px';
+    this.buttonContainer.style.top = touch.pageY-25 + 'px';
+    event.preventDefault();
+  }, false);
   this.clearOpacity = function(){
     this.upButton.css({'opacity':'0'});
     this.rightButton.css({'opacity':'0'});
     this.downButton.css({'opacity':'0'});
     this.leftButton.css({'opacity':'0'});
+    this.aButton.css({'opacity':'1'});
+    this.bButton.css({'opacity':'1'});
   };
   this.isNewTargetDpadButton = function(target){
     var id = target.id;
@@ -52,6 +67,8 @@ Bpad = function()
       this.rightButton = jQuery('#bpad-right');
       this.downButton = jQuery('#bpad-down');
       this.leftButton = jQuery('#bpad-left');
+      this.aButton = jQuery('#button-a');
+      this.bButton = jQuery('#button-b');
 
 // Touch Start Handlers  ---- Starts the startHandler 
 // function that pushes to the buttonsDown array and also adds opacity over the dpad button being pressed
@@ -68,6 +85,12 @@ Bpad = function()
       this.leftButton.on('touchstart', function(){
         this.startHandler('left', this.leftButton);
       }.bind(this));
+      this.aButton.on('touchstart', function(){
+        this.startHandler('a-button', this.aButton);
+      }.bind(this));
+      this.bButton.on('touchstart', function(){
+        this.startHandler('b-button', this.bButton);
+      }.bind(this));
       // Touch End Handlers
       this.upButton.on('touchend', function(){
         this.endHandler('up', this.upButton);
@@ -80,6 +103,12 @@ Bpad = function()
       }.bind(this));
       this.leftButton.on('touchend', function(){
         this.endHandler('left', this.leftButton);
+      }.bind(this));
+      this.aButton.on('touchend', function(){
+        this.endHandler('a-button', this.aButton);
+      }.bind(this));
+      this.bButton.on('touchend', function(){
+        this.endHandler('b-button', this.bButton);
       }.bind(this));
 // touchMove and the like down here, trying to write it so that you can keep your finger on the screen
 // and still be able to move to another direction on the dpad
@@ -132,7 +161,7 @@ Bpad = function()
 
    this.endHandler = function(button, buttonVar)
    {
-          buttonVar.css({'opacity':'0'});
+          this.clearOpacity();
           var index = keys.indexOf(button);
           keys.splice(index, 1);
    };

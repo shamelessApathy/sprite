@@ -52,6 +52,7 @@ function Animation(spritesheet, frameSpeed, startFrame, endFrame) {
       spritesheet.frameWidth, spritesheet.frameHeight);
   };
 };
+// I wrote this to take the logic out of the function that calls this one --simplify?? MainLoop() function
 var checkAnimation = function(){
   if (keys.indexOf('left') >= 0)
   {
@@ -69,6 +70,10 @@ var checkAnimation = function(){
   {
     return 'down';
   }
+  if (keys.indexOf('space') >= 0)
+  {
+    return 'space';
+  }
 };
 var spritesheet = new SpriteSheet('img/anime.gif', 65, 96);
 var walkRight = new Animation(spritesheet, 10, 7, 10);
@@ -76,6 +81,7 @@ var walkLeft = new Animation(spritesheet, 10, 19, 22);
 var walkDown = new Animation(spritesheet, 10, 1, 4);
 var walkUp = new Animation(spritesheet, 10, 13, 16);
 var standingDown = new Animation(spritesheet, 10, 0, 0);
+var spaceBar = new Animation(spritesheet, 10, 43, 44);
 var keys = [];
 var Game = function(){
     var x = 400;
@@ -128,6 +134,12 @@ var Game = function(){
     console.log('default is running')
     standingDown.draw(x,y);
   };
+  this.spaceHandler = function(){
+    ctx.clearRect(0, 0, 550, 300);
+    console.log('spaceHandler running')
+    spaceBar.update();
+    spaceBar.draw(x,y);
+  };
   this.mainLoop = function() {
     var check = checkAnimation();
     switch (check)
@@ -139,6 +151,8 @@ var Game = function(){
       case 'down' : this.downHandler();
       break;
       case 'up' : this.upHandler();
+      break;
+      case 'space' : this.spaceHandler();
       break;
       default : this.standingDownHandler();
     }
@@ -180,6 +194,11 @@ function pushKey(e) {
       keys.push('right');
       }
     }
+    else if (e.keyCode == '32'){
+      if (keys.indexOf('space') < 0) {
+        keys.push('space');
+      }
+    }
 
 };
 document.onkeyup = removeKey;
@@ -198,6 +217,10 @@ function removeKey(e) {
   }
   else if (e.keyCode == '39'){
     var index = keys.indexOf('right');
+    keys.splice(index, 1);
+  }
+  else if (e.keyCode == '32'){
+    var index = keys.indexOf('space');
     keys.splice(index, 1);
   }
 };
