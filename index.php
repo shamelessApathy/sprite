@@ -15,6 +15,7 @@
 	<div class='bpad-direction' id='bpad-right'></div>
 	<div class='bpad-direction' id='bpad-down'></div>
 </div>
+<div class='bpad-buttons-container'></div>
 
 </body>
 <script src ='js/jquery-3.1.0.js'></script>

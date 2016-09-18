@@ -42,6 +42,15 @@ html
 	position:absolute;
 	margin-top:-100px;
 }
+.bpad-buttons-container
+{
+	height:100px;
+	width:100px;
+	border:2px solid black;
+	position:absolute;
+	bottom:0;
+	right:0;
+}
 .bpad-container
 {
 	height:100px;
