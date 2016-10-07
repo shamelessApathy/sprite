@@ -17,3 +17,7 @@ canvas
 	-webkit-box-sizing:border-box;
 	position:relative;
 }
+body
+{
+	background-color:white;
+}

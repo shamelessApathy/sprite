@@ -26,16 +26,25 @@ maximum-scale=1.0, user-scalable=no" />
 </div>
 <script>
 <!--
-//function fullwin(){
-//window.open("/","bfs","fullscreen,scrollbars")
-window.scrollTo(0,1);
-//}
+var elem = document.documentElement;
+var fullScreen = function(element)   {
+  if(elem.requestFullScreen) {
+    elem.requestFullScreen();
+  } else if(viewport.webkitRequestFullScreen ) {
+    elem.webkitRequestFullScreen();
+  } else if(viewport.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if(elem.msRequestFullscreen){
+    elem.msRequestFullscreen();
+    }
+};
+
 //-->
 </script>
 
 <center>
 <form>
-<input type="button" onClick="fullwin()" value="Open Full Screen Window">
+<input type="button" onClick="fullScreen()" value="Open Full Screen Window">
 </form>
 </center>
 </body>
