@@ -5,3 +5,15 @@ canvas
 	margin-right:auto;
 	display:block;
 }
+#viewport 
+{
+	width:550px;
+	height:300px;
+	border:1px solid black;
+	margin:auto auto;
+	box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position:relative;
+}

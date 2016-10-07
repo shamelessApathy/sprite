@@ -1,10 +1,14 @@
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+<meta name="viewport" content="width=device-width; initial-scale = 1.0; 
+maximum-scale=1.0; user-scalable=no" /> 
 <link href='css/styles.css' rel='stylesheet' type='text/css'/>
 <link href='bpad/bpad.css' rel='stylesheet' type='text/css'/>
+<link rel='manifest' href='js/manifest.json'/>
 </head>
 <body>
-<canvas id='canvas' width='550' height='300'></canvas>
+<div id='viewport'>
+<canvas id='canvas' width='550' height='300'></canvas></div>
 
 <div class='bpad-container'>
 	<div id='dragtab'><div id='dragalert'><span>&#8595</span> Use to Move D-Pad</div></div>
