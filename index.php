@@ -24,7 +24,20 @@ maximum-scale=1.0, user-scalable=no" />
 	<div id='button-a'>A</div>
 	<div id='button-b'>B</div>
 </div>
+<script>
+<!--
+//function fullwin(){
+//window.open("/","bfs","fullscreen,scrollbars")
+window.scrollTo(0,1);
+//}
+//-->
+</script>
 
+<center>
+<form>
+<input type="button" onClick="fullwin()" value="Open Full Screen Window">
+</form>
+</center>
 </body>
 <script src ='js/jquery-3.1.0.js'></script>
 <script src ='bpad/bpad.js'></script>
