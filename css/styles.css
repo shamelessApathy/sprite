@@ -21,3 +21,7 @@ body
 {
 	background-color:white;
 }
+#exitFullScreenButton
+{
+	display:none;
+}

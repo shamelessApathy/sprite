@@ -24,30 +24,51 @@ maximum-scale=1.0, user-scalable=no" />
 	<div id='button-a'>A</div>
 	<div id='button-b'>B</div>
 </div>
-<script>
-<!--
-var elem = document.documentElement;
-var fullScreen = function(element)   {
-  if(elem.requestFullScreen) {
-    elem.requestFullScreen();
-  } else if(viewport.webkitRequestFullScreen ) {
-    elem.webkitRequestFullScreen();
-  } else if(viewport.mozRequestFullScreen) {
-    elem.mozRequestFullScreen();
-  } else if(elem.msRequestFullscreen){
-    elem.msRequestFullscreen();
-    }
-};
-
-//-->
-</script>
 
 <center>
 <form>
-<input type="button" onClick="fullScreen()" value="Open Full Screen Window">
+<input type="button" id='fullScreenButton' onClick="fullScreen()" value="Open Full Screen Window">
+<input type='button' id='exitFullScreenButton' onClick='exitFullScreen()' value='Exit Full Screen Window'>
 </form>
 </center>
 </body>
 <script src ='js/jquery-3.1.0.js'></script>
 <script src ='bpad/bpad.js'></script>
 <script src='js/classes/animation.js'></script>
+<script>
+<!--
+
+var elem = document.documentElement;
+var fullScreenButton = document.getElementById('fullScreenButton');
+var exitFullScreenButton = document.getElementById('exitFullScreenButton');
+var fullScreen = function(element)   {
+  if(elem.requestFullScreen) {
+    elem.requestFullScreen();
+  } else if(elem.webkitRequestFullScreen ) {
+    elem.webkitRequestFullScreen();
+  } else if(elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if(elem.msRequestFullscreen){
+    elem.msRequestFullscreen();
+    };
+fullScreenButton.setAttribute('style','display:none');
+exitFullScreenButton.setAttribute('style','display:block');
+};
+var exitFullScreen = function(element){
+	console.log('exitFullScreen() function running');
+	  if(document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if(document.webkitExitFullscreen) {
+  	console.log('webvkit');
+    document.webkitExitFullscreen();
+  } else if(document.mozCancelFullScreen) {
+    document.mozCancelFullscreen();
+  } else if(document.msExitFullscreen){
+    document.msExitFullscreen();
+    };
+exitFullScreenButton.setAttribute('style','display:none');
+fullScreenButton.setAttribute('style','display:block');
+};
+
+//-->
+</script>
