@@ -37,7 +37,13 @@ maximum-scale=1.0, user-scalable=no" />
 <script src='js/classes/animation.js'></script>
 <script>
 <!--
-
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
 var elem = document.documentElement;
 var fullScreenButton = document.getElementById('fullScreenButton');
 var exitFullScreenButton = document.getElementById('exitFullScreenButton');
