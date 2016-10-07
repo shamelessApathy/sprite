@@ -86,7 +86,7 @@ Bpad = function()
         this.startHandler('left', this.leftButton);
       }.bind(this));
       this.aButton.on('touchstart', function(){
-        this.startHandler('a-button', this.aButton);
+        this.startHandler('space', this.aButton);
       }.bind(this));
       this.bButton.on('touchstart', function(){
         this.startHandler('b-button', this.bButton);
@@ -105,7 +105,7 @@ Bpad = function()
         this.endHandler('left', this.leftButton);
       }.bind(this));
       this.aButton.on('touchend', function(){
-        this.endHandler('a-button', this.aButton);
+        this.endHandler('space', this.aButton);
       }.bind(this));
       this.bButton.on('touchend', function(){
         this.endHandler('b-button', this.bButton);
