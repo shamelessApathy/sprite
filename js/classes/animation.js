@@ -102,28 +102,28 @@ var Game = function(){
   };
   this.leftHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('left is being pressed');
+    
     x = x -.5;
     walkLeft.update();
     walkLeft.draw(x,y);
   };
   this.rightHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('right is being pressed');
+    
     x = x +.5;
     walkRight.update();
     walkRight.draw(x,y);
   };
   this.upHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('right is being pressed');
+    
     y = y -.5;
     walkUp.update();
     walkUp.draw(x,y);
   };  
   this.downHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('right is being pressed');
+    
     y = y +.5;
     walkDown.update();
     walkDown.draw(x,y);
@@ -131,12 +131,12 @@ var Game = function(){
 
   this.standingDownHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('default is running')
+    
     standingDown.draw(x,y);
   };
   this.spaceHandler = function(){
     ctx.clearRect(0, 0, 550, 300);
-    console.log('spaceHandler running')
+    
     spaceBar.update();
     spaceBar.draw(x,y);
   };
