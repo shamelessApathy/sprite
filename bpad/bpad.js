@@ -69,6 +69,7 @@ Bpad = function()
       this.leftButton = jQuery('#bpad-left');
       this.aButton = jQuery('#button-a');
       this.bButton = jQuery('#button-b');
+      this.document = jQuery(document);
 
 // Touch Start Handlers  ---- Starts the startHandler 
 // function that pushes to the buttonsDown array and also adds opacity over the dpad button being pressed
@@ -149,6 +150,9 @@ Bpad = function()
       this.bButton.on('mouseup', function(){
         this.endHandler('b-button', this.bButton);
       }.bind(this));
+      this.document.on("mousemove", function(){
+        this.clearKeys();
+      }.bind(this));
 // touchMove and the like down here, trying to write it so that you can keep your finger on the screen
 // and still be able to move to another direction on the dpad
       this.upButton.on('touchmove', function(e){
@@ -204,6 +208,10 @@ Bpad = function()
           var index = keys.indexOf(button);
           keys.splice(index, 1);
    };
+   this.clearKeys = function(){
+    this.clearOpacity();
+    keys = [];
+   }
 
 
    this.initialize();
